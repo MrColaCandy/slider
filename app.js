@@ -30,8 +30,59 @@ var leftBtn = document.getElementById("left-btn");
 var rightBtn = document.getElementById("right-btn");
 
 leftBtn.onclick = (e) => {
+  timer = 500;
   slider.scrollLeft += slider.children[0].offsetWidth;
 };
 rightBtn.onclick = (e) => {
+  timer = 500;
   slider.scrollLeft -= slider.children[0].offsetWidth;
 };
+
+var body = document.body;
+var pos = { mouseX: 0, scrollX: 0 };
+var isDragging = false;
+body.addEventListener("mousedown", (e) => {
+  pos.mouseX = e.clientX;
+  pos.scrollX = slider.scrollLeft;
+  isDragging = true;
+  timer = 500;
+});
+
+body.addEventListener("mousemove", (e) => {
+  e.preventDefault();
+  if (!isDragging) return;
+  timer = 500;
+  const dx = e.clientX - pos.mouseX;
+  if (dx > 0) slider.scrollLeft -= slider.children[0].offsetWidth;
+  else slider.scrollLeft += slider.children[0].offsetWidth;
+});
+
+body.addEventListener("mouseup", () => {
+  isDragging = false;
+});
+
+var timer = 500;
+var isForward = true;
+setInterval(() => {
+  timer--;
+  if (slider.scrollLeft == slider.scrollWidth - slider.clientWidth) {
+    isForward = false;
+    leftBtn.style.opacity = 0;
+  } else if (slider.scrollLeft == 0) {
+    isForward = true;
+    rightBtn.style.opacity = 0;
+  } else {
+    rightBtn.style.opacity = 1;
+    leftBtn.style.opacity = 1;
+  }
+
+  if (timer <= 0) {
+    timer = 500;
+
+    if (isForward) {
+      slider.scrollLeft += slider.children[0].offsetWidth;
+    } else {
+      slider.scrollLeft -= slider.children[0].offsetWidth;
+    }
+  }
+}, 10);
