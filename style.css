@@ -1,0 +1,57 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.container {
+  min-width: 100vw;
+}
+
+#slider {
+  white-space: nowrap;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  display: inline-block;
+  text-align: center;
+}
+
+.slide div {
+  margin: 0 auto;
+  margin-top: 20%;
+
+  color: white;
+  font-size: 2rem;
+}
+
+.icons {
+  position: fixed;
+  transform: translateY(50%);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+i {
+  color: rgba(255, 255, 255, 0.428);
+  font-size: 5rem;
+  margin: 0 16px;
+  transition: all 600ms;
+}
+i:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
