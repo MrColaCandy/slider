@@ -30,12 +30,12 @@ var leftBtn = document.getElementById("left-btn");
 var rightBtn = document.getElementById("right-btn");
 
 leftBtn.onclick = (e) => {
-  timer = 500;
   slider.scrollLeft += slider.children[0].offsetWidth;
+  timer = 0;
 };
 rightBtn.onclick = (e) => {
-  timer = 500;
   slider.scrollLeft -= slider.children[0].offsetWidth;
+  timer = 0;
 };
 
 var body = document.body;
@@ -45,7 +45,6 @@ body.addEventListener("mousedown", (e) => {
   pos.mouseX = e.clientX;
   pos.scrollX = slider.scrollLeft;
   isDragging = true;
-  timer = 500;
 });
 
 body.addEventListener("mousemove", (e) => {
